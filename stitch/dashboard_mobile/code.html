@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architect UI - Mobile Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#e5e2e1",
+              "outline": "#8c909e",
+              "tertiary": "#ffb873",
+              "on-tertiary": "#4b2800",
+              "surface-container": "#201f1f",
+              "tertiary-fixed-dim": "#ffb873",
+              "tertiary-container": "#d37b02",
+              "on-surface": "#e5e2e1",
+              "on-primary-fixed-variant": "#004492",
+              "primary": "#acc7ff",
+              "on-tertiary-fixed-variant": "#6a3b00",
+              "outline-variant": "#424753",
+              "primary-container": "#508ff8",
+              "secondary": "#b2c7f5",
+              "on-secondary-fixed-variant": "#32476d",
+              "on-error-container": "#ffdad6",
+              "surface-container-highest": "#353534",
+              "on-secondary-fixed": "#011a3f",
+              "primary-fixed": "#d7e2ff",
+              "surface": "#131313",
+              "on-surface-variant": "#c2c6d5",
+              "error": "#ffb4ab",
+              "on-error": "#690005",
+              "secondary-fixed-dim": "#b2c7f5",
+              "secondary-fixed": "#d7e2ff",
+              "secondary-container": "#344970",
+              "on-primary-container": "#00285b",
+              "on-primary-fixed": "#001a40",
+              "surface-container-low": "#1c1b1b",
+              "inverse-surface": "#e5e2e1",
+              "surface-variant": "#353534",
+              "surface-tint": "#acc7ff",
+              "on-tertiary-container": "#412200",
+              "primary-fixed-dim": "#acc7ff",
+              "on-tertiary-fixed": "#2d1600",
+              "on-primary": "#002f68",
+              "surface-container-lowest": "#0e0e0e",
+              "background": "#131313",
+              "on-secondary-container": "#a4b8e6",
+              "tertiary-fixed": "#ffdcbf",
+              "inverse-primary": "#005bbf",
+              "error-container": "#93000a",
+              "inverse-on-surface": "#313030",
+              "surface-dim": "#131313",
+              "on-secondary": "#1a3055",
+              "surface-bright": "#3a3939",
+              "surface-container-high": "#2a2a2a"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(32, 31, 31, 0.6);
+            backdrop-filter: blur(32px);
+            border: 1px solid rgba(66, 71, 83, 0.2);
+        }
+        .stats-gradient {
+            background: linear-gradient(135deg, #acc7ff 0%, #508ff8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body min-h-screen pb-24">
+<!-- Header / Top Bar (Mobile Context) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/80 backdrop-blur-md px-6 py-4 flex justify-between items-center">
+<div class="flex flex-col">
+<span class="font-headline font-light text-xl tracking-tight text-neutral-100">Architect UI</span>
+<span class="font-body text-[10px] uppercase tracking-widest text-primary/60">Premium Automation</span>
+</div>
+<div class="flex gap-4 items-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 bg-surface-container-highest rounded-full border border-outline-variant/20 overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="Close up portrait of a professional male user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtPfqScHpq8pRs2qqKcs__dFJ-GZHJ45JuNRlxTDmGK3oh2u_WPARU3aEQQ3YXYdfqQt7zrXetjKVCwvH3qKmoJBb7McTLVanLwgdydEjScunCBrOS3z60pise3sBeQ4_kpcevKVAEGMhkMP7s1E-aIKXVmyUPByEbourIPBm6mIPiccLqdKIUEq1_Wp7dl3_tG5jQk4Icji4-eQtYZ3bIZQ0D2JaX8g6x6VCfMZs_i4cPrqw1AUWNrX3vpNOqkbYRajD5l2-GocOF"/>
+</div>
+</div>
+</header>
+<main class="px-6 pt-4 space-y-8">
+<!-- Dashboard Title -->
+<section>
+<h1 class="font-headline text-3xl font-light tracking-tight text-on-surface">Dashboard</h1>
+<p class="font-body text-sm text-outline mt-1">Operational Overview</p>
+</section>
+<!-- Stats Grid (2x2) -->
+<section class="grid grid-cols-2 gap-3">
+<div class="glass-panel p-4 flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="group">group</span>
+<div>
+<span class="block font-headline text-2xl font-bold tracking-[0.05em] stats-gradient">1,284</span>
+<span class="font-label text-[10px] text-outline uppercase tracking-wider">Students</span>
+</div>
+</div>
+<div class="glass-panel p-4 flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="verified">verified</span>
+<div>
+<span class="block font-headline text-2xl font-bold tracking-[0.05em] stats-gradient">842</span>
+<span class="font-label text-[10px] text-outline uppercase tracking-wider">Certificates</span>
+</div>
+</div>
+<div class="glass-panel p-4 flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="trending_up">trending_up</span>
+<div>
+<span class="block font-headline text-2xl font-bold tracking-[0.05em] stats-gradient">+12.4%</span>
+<span class="font-label text-[10px] text-outline uppercase tracking-wider">Growth</span>
+</div>
+</div>
+<div class="glass-panel p-4 flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="bolt">bolt</span>
+<div>
+<span class="block font-headline text-2xl font-bold tracking-[0.05em] stats-gradient">98.2%</span>
+<span class="font-label text-[10px] text-outline uppercase tracking-wider">Efficiency</span>
+</div>
+</div>
+</section>
+<!-- Main Chart Area -->
+<section class="glass-panel p-6">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="font-headline text-lg font-medium text-on-surface">Activity Trends</h3>
+<p class="font-body text-xs text-outline">Real-time engagement metrics</p>
+</div>
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase">7 Days</span>
+</div>
+<!-- Mock Chart Visualization -->
+<div class="h-40 flex items-end justify-between gap-2">
+<div class="w-full bg-surface-container-highest/40 h-1/2 relative group transition-all hover:bg-primary-container/20">
+<div class="absolute bottom-0 w-full bg-primary/40 h-3/4"></div>
+</div>
+<div class="w-full bg-surface-container-highest/40 h-3/4 relative group transition-all hover:bg-primary-container/20">
+<div class="absolute bottom-0 w-full bg-primary/40 h-1/2"></div>
+</div>
+<div class="w-full bg-surface-container-highest/40 h-2/3 relative group transition-all hover:bg-primary-container/20">
+<div class="absolute bottom-0 w-full bg-primary/40 h-5/6"></div>
+</div>
+<div class="w-full bg-surface-container-highest/40 h-full relative group transition-all hover:bg-primary-container/20 border-x border-primary/20">
+<div class="absolute bottom-0 w-full bg-primary h-2/3"></div>
+</div>
+<div class="w-full bg-surface-container-highest/40 h-4/5 relative group transition-all hover:bg-primary-container/20">
+<div class="absolute bottom-0 w-full bg-primary/40 h-1/3"></div>
+</div>
+<div class="w-full bg-surface-container-highest/40 h-1/2 relative group transition-all hover:bg-primary-container/20">
+<div class="absolute bottom-0 w-full bg-primary/40 h-3/4"></div>
+</div>
+</div>
+</section>
+<!-- Activity Feed -->
+<section class="space-y-4">
+<div class="flex justify-between items-center px-1">
+<h3 class="font-headline text-lg font-medium text-on-surface">Recent Activity</h3>
+<button class="text-primary text-xs font-medium uppercase tracking-wider">View All</button>
+</div>
+<div class="space-y-4">
+<!-- Activity Item 1 -->
+<div class="flex items-center gap-4 py-1">
+<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="person_add">person_add</span>
+</div>
+<div class="flex-1">
+<p class="font-body text-sm text-on-surface leading-snug">New student enrollment: <span class="text-primary">Marcus Holloway</span></p>
+<p class="font-body text-[10px] text-outline mt-0.5">2 minutes ago</p>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex items-center gap-4 py-1">
+<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="assignment_turned_in">assignment_turned_in</span>
+</div>
+<div class="flex-1">
+<p class="font-body text-sm text-on-surface leading-snug">Certificate issued: <span class="text-primary">Advanced AI Systems</span></p>
+<p class="font-body text-[10px] text-outline mt-0.5">45 minutes ago</p>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex items-center gap-4 py-1">
+<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="settings_suggest">settings_suggest</span>
+</div>
+<div class="flex-1">
+<p class="font-body text-sm text-on-surface leading-snug">System update completed: <span class="text-primary">v2.4.0 Patch</span></p>
+<p class="font-body text-[10px] text-outline mt-0.5">3 hours ago</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Navigation Pill -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm">
+<div class="glass-panel flex justify-around items-center px-4 py-3 shadow-[0_40px_40px_0_rgba(0,0,0,0.4)] rounded-full">
+<!-- Dashboard (Active) -->
+<a class="flex flex-col items-center gap-1 group" href="#">
+<div class="bg-white/5 text-primary border-l-2 border-primary px-4 py-1 transition-all duration-300 flex items-center justify-center rounded-lg scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+</div>
+<span class="font-body text-[10px] font-medium text-primary tracking-wide">Dashboard</span>
+</a>
+<!-- Students -->
+<a class="flex flex-col items-center gap-1 group" href="#">
+<div class="text-outline hover:text-on-surface transition-all duration-300 px-4 py-1 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</div>
+<span class="font-body text-[10px] font-medium text-outline group-hover:text-on-surface tracking-wide transition-colors">Students</span>
+</a>
+<!-- Certificates -->
+<a class="flex flex-col items-center gap-1 group" href="#">
+<div class="text-outline hover:text-on-surface transition-all duration-300 px-4 py-1 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+</div>
+<span class="font-body text-[10px] font-medium text-outline group-hover:text-on-surface tracking-wide transition-colors">Certificates</span>
+</a>
+<!-- Settings -->
+<a class="flex flex-col items-center gap-1 group" href="#">
+<div class="text-outline hover:text-on-surface transition-all duration-300 px-4 py-1 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</div>
+<span class="font-body text-[10px] font-medium text-outline group-hover:text-on-surface tracking-wide transition-colors">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 w-full h-full -z-50 pointer-events-none overflow-hidden opacity-20">
+<div class="absolute top-[-10%] right-[-10%] w-[60%] h-[40%] bg-primary/20 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[50%] h-[30%] bg-primary-container/10 blur-[100px] rounded-full"></div>
+</div>
+</body></html>

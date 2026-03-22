@@ -1,0 +1,41 @@
+{
+  "name": "email-automation",
+  "version": "1.0.0",
+  "description": "Generate and email certificates using PDFKit and Nodemailer with template support",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "better-auth": "^1.5.6",
+    "cors": "^2.8.6",
+    "dotenv": "^16.3.0",
+    "drizzle-orm": "^0.45.1",
+    "express": "^5.2.1",
+    "nodemailer": "^6.9.0",
+    "p-limit": "^4.0.0",
+    "papaparse": "^5.4.0",
+    "pdfkit": "^0.14.0",
+    "pg": "^8.20.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
+    "@types/nodemailer": "^6.4.0",
+    "@types/papaparse": "^5.3.0",
+    "@types/pdfkit": "^0.13.0",
+    "@types/pg": "^8.20.0",
+    "drizzle-kit": "^0.31.10",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
