@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useStudents } from '@/hooks/useStudents';
+import { Plus } from 'lucide-react';
 import { StudentTable } from '@/components/features/students/StudentTable';
 import { StudentTableSkeleton } from '@/components/features/students/StudentTableSkeleton';
 import { EmptyState } from '@/components/features/students/EmptyState';
@@ -40,7 +41,10 @@ export default function StudentsPage() {
             </h2>
             <p className="text-sm text-outline mt-1">Managing student profiles</p>
           </div>
-          <Button className="btn-primary-gradient">Add Student</Button>
+          <Button className="btn-primary-gradient">
+            <Plus className="w-4 h-4 mr-2" />
+            Add Student
+          </Button>
         </div>
         <StudentTableSkeleton />
       </div>
@@ -69,6 +73,7 @@ export default function StudentsPage() {
           </p>
         </div>
         <Button className="btn-primary-gradient" onClick={() => setCreateOpen(true)}>
+          <Plus className="w-4 h-4 mr-2" />
           Add Student
         </Button>
       </div>

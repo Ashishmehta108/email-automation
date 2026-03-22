@@ -25,6 +25,8 @@ export type {
   EmailLog,
   NewEmailLog,
   EmailLogStatus,
+  EmailTemplate,
+  NewEmailTemplate,
 } from '../db/schema.js';
 
 // ============================================================================
@@ -302,7 +304,9 @@ export interface DashboardStats {
   };
   templates: {
     total: number;
-    active: number;
+    email: number;
+    certificate: number;
+    activeCertificates: number;
   };
   certificates: {
     pending: number;

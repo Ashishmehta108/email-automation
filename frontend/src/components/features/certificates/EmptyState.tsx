@@ -1,5 +1,4 @@
-import { Plus } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Award } from 'lucide-react';
 
 interface EmptyStateProps {
   title: string;
@@ -12,15 +11,14 @@ export function EmptyState({ title, description, cta, onCtaClick }: EmptyStatePr
   return (
     <div className="text-center py-12">
       <div className="w-16 h-16 rounded-full bg-surface-highest flex items-center justify-center mx-auto mb-4">
-        <Plus className="w-8 h-8 text-outline" />
+        <Award className="w-8 h-8 text-outline" />
       </div>
       <h3 className="font-headline text-lg font-medium text-on-surface mb-2">{title}</h3>
       {description && <p className="text-outline text-sm mb-4">{description}</p>}
       {cta && (
-        <Button onClick={onCtaClick} className="btn-primary-gradient">
-          <Plus className="w-4 h-4 mr-2" />
+        <button onClick={onCtaClick} className="btn-primary-gradient px-6 py-2 rounded-sm font-medium text-sm">
           {cta}
-        </Button>
+        </button>
       )}
     </div>
   );

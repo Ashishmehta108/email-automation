@@ -195,13 +195,28 @@ export const emailLogs = pgTable('email_logs', {
     .references(() => certificates.id, { onDelete: 'set null' }),
   recipientEmail: text('recipient_email').notNull(),
   subject: text('subject').notNull(),
-  status: text('status', { 
-    enum: ['pending', 'sent', 'delivered', 'bounced', 'failed'] 
+  status: text('status', {
+    enum: ['pending', 'sent', 'delivered', 'bounced', 'failed']
   }).default('pending').notNull(),
   errorMessage: text('error_message'),
   sentAt: timestamp('sent_at'),
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });
+
+// Email Templates table for storing email templates
+export const emailTemplates = pgTable('email_templates', {
+  id: serial('id').primaryKey(),
+  name: text('name').notNull(),
+  subject: text('subject').notNull(),
+  body: text('body').notNull(),
+  variables: jsonb('variables').notNull().default('[]').$type<string[]>(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+});
+
+export const emailTemplatesRelations = relations(emailTemplates, ({}) => ({
+  // No relations needed for email templates
+}));
 
 
 export const studentsRelations = relations(students, ({ many }) => ({
@@ -277,3 +292,5 @@ export type CertificateStatus = Certificate['status'];
 export type EmailLog = InferSelectModel<typeof emailLogs>;
 export type NewEmailLog = InferInsertModel<typeof emailLogs>;
 export type EmailLogStatus = EmailLog['status'];
+export type EmailTemplate = InferSelectModel<typeof emailTemplates>;
+export type NewEmailTemplate = InferInsertModel<typeof emailTemplates>;

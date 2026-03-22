@@ -11,7 +11,7 @@ export function Shell({ children }: ShellProps) {
     <div className="min-h-screen bg-surface-lowest">
       <Sidebar />
       <Topbar />
-      <main className="ml-[240px] min-h-screen">
+      <main className="ml-[240px] min-h-screen bg-surface-lowest">
         {children}
       </main>
     </div>

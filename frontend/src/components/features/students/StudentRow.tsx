@@ -11,7 +11,7 @@ export function StudentRow({ student, onEdit, onDelete }: StudentRowProps) {
   const initials = student.name.split(' ').map(n => n[0]).join('').slice(0, 2);
   
   return (
-    <div className="grid grid-cols-12 gap-4 items-center glass-panel px-6 py-5 rounded-sm border border-white/5 transition-all duration-300 hover:bg-white/[0.02]">
+    <div className="grid grid-cols-12 gap-4 items-center glass-panel px-6 py-5 rounded-sm border border-white/5 transition-all duration-300 row-hover-effect">
       <div className="col-span-4 flex items-center gap-4">
         <div className="w-10 h-10 bg-surface-highest rounded-full flex items-center justify-center border border-white/10 text-primary font-headline font-bold">
           {initials}

@@ -44,7 +44,7 @@ export function CreateStudentModal({ open, onOpenChange }: CreateStudentModalPro
             <label className="block text-label-md text-outline mb-2">Name</label>
             <input
               {...form.register('name')}
-              className="w-full input-base"
+              className="input-base w-full"
               placeholder="John Doe"
             />
             {form.formState.errors.name && (
@@ -55,7 +55,7 @@ export function CreateStudentModal({ open, onOpenChange }: CreateStudentModalPro
             <label className="block text-label-md text-outline mb-2">Roll Number</label>
             <input
               {...form.register('rollNo')}
-              className="w-full input-base"
+              className="input-base w-full"
               placeholder="AR-2024-001"
             />
             {form.formState.errors.rollNo && (
@@ -67,7 +67,7 @@ export function CreateStudentModal({ open, onOpenChange }: CreateStudentModalPro
             <input
               {...form.register('email')}
               type="email"
-              className="w-full input-base"
+              className="input-base w-full"
               placeholder="john@example.com"
             />
             {form.formState.errors.email && (
@@ -78,7 +78,7 @@ export function CreateStudentModal({ open, onOpenChange }: CreateStudentModalPro
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
               Cancel
             </Button>
-            <Button type="submit" disabled={isPending}>
+            <Button type="submit" className="btn-primary-gradient" disabled={isPending}>
               {isPending ? 'Creating...' : 'Create'}
             </Button>
           </div>

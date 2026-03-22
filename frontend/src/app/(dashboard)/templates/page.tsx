@@ -55,7 +55,7 @@ export default function TemplatesPage() {
     );
   }
 
-  const templates = data?.data || [];
+  const templates = data?.data?.data || [];
 
   return (
     <div className="p-10 max-w-7xl w-full mx-auto space-y-8">
@@ -65,6 +65,7 @@ export default function TemplatesPage() {
             Email Templates
           </h2>
           <p className="text-sm text-outline mt-1">
+
             {templates.length} template{templates.length !== 1 ? 's' : ''}
           </p>
         </div>

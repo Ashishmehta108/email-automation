@@ -245,6 +245,41 @@ export const previewTemplateSchema = z.object({
 });
 
 // ============================================================================
+// Email Template Validation Schemas
+// ============================================================================
+
+/**
+ * Schema for creating an email template
+ */
+export const createEmailTemplateSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  subject: z.string().min(1, 'Subject is required'),
+  body: z.string().min(1, 'Body is required'),
+  variables: z.array(z.string()).optional(),
+});
+
+/**
+ * Schema for updating an email template
+ */
+export const updateEmailTemplateSchema = createEmailTemplateSchema.partial();
+
+/**
+ * Schema for email template list query parameters
+ */
+export const emailTemplateListQuerySchema = z.object({
+  search: z.string().optional(),
+  limit: z.string().transform((val) => parseInt(val, 10)).optional(),
+  offset: z.string().transform((val) => parseInt(val, 10)).optional(),
+});
+
+/**
+ * Schema for email template ID parameter
+ */
+export const emailTemplateIdParamSchema = z.object({
+  id: z.string().transform((val) => parseInt(val, 10)),
+});
+
+// ============================================================================
 // Email Validation Schemas
 // ============================================================================
 
@@ -343,3 +378,13 @@ export type UpdateTemplateInput = z.infer<typeof updateTemplateSchema>;
  * Type for validated preview template input
  */
 export type PreviewTemplateInput = z.infer<typeof previewTemplateSchema>;
+
+/**
+ * Type for validated create email template input
+ */
+export type CreateEmailTemplateInput = z.infer<typeof createEmailTemplateSchema>;
+
+/**
+ * Type for validated update email template input
+ */
+export type UpdateEmailTemplateInput = z.infer<typeof updateEmailTemplateSchema>;

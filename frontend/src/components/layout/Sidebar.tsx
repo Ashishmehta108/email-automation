@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Users, FileCheck, Settings } from 'lucide-react';
+import { LayoutDashboard, Users, Award, Settings } from 'lucide-react';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/students', label: 'Students', icon: Users },
-  { href: '/certificates', label: 'Certificates', icon: FileCheck },
+  { href: '/certificates', label: 'Certificates', icon: Award },
   { href: '/settings', label: 'Settings', icon: Settings },
 ];
 
@@ -15,7 +15,7 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-[240px] h-screen fixed left-0 top-0 bg-surface-low/60 backdrop-blur-md border-r border-white/10 ghost-shadow flex flex-col py-8 px-4 z-50">
+    <aside className="w-[240px] h-screen fixed left-0 top-0 bg-surface-low/60 backdrop-blur-md border-r border-outline-variant/20 ghost-shadow flex flex-col py-8 px-4 z-50">
       <div className="mb-12 px-2">
         <h1 className="font-headline text-xl font-light tracking-tight text-on-surface">
           Email Automation
@@ -46,7 +46,7 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="mt-auto pt-6 border-t border-white/5 flex items-center gap-3 px-2">
+      <div className="mt-auto pt-6 border-t border-outline-variant/30 flex items-center gap-3 px-2">
         <div className="w-8 h-8 rounded-full overflow-hidden bg-surface-highest">
           <div className="w-full h-full flex items-center justify-center text-xs font-medium text-primary">
             A

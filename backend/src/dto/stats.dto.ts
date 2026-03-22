@@ -41,11 +41,27 @@ export interface EmailStats {
 }
 
 /**
+ * Template statistics
+ */
+export interface TemplateStats {
+  /** Total number of templates (email + certificate) */
+  total: number;
+  /** Number of email templates */
+  email: number;
+  /** Number of certificate templates */
+  certificate: number;
+  /** Number of active certificate templates */
+  activeCertificates: number;
+}
+
+/**
  * Complete dashboard statistics data
  */
 export interface StatsData {
   /** Student statistics */
   students: StudentStats;
+  /** Template statistics */
+  templates: TemplateStats;
   /** Certificate statistics */
   certificates: CertificateStats;
   /** Email statistics */

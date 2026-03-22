@@ -2,18 +2,21 @@ import { Router, Response } from 'express';
 import { studentRoutes } from './student.routes.js';
 import { certificateRoutes } from './certificate.routes.js';
 import { certificateTemplateRoutes } from './certificate-template.routes.js';
+import { emailTemplateRoutes } from './email-template.routes.js';
 import { authRoutes } from './auth.routes.js';
 import { emailLogRepository } from '../repository/email-log.repository.js';
 import { certificateRepository } from '../repository/certificate.repository.js';
 import { studentRepository } from '../repository/student.repository.js';
 import { certificateTemplateRepository } from '../repository/certificate-template.repository.js';
+import { emailTemplateRepository } from '../repository/email-template.repository.js';
 
 const router = Router();
 
 // Mount routes
 router.use('/students', studentRoutes);
 router.use('/certificates', certificateRoutes);
-router.use('/templates', certificateTemplateRoutes);
+router.use('/certificate-templates', certificateTemplateRoutes);
+router.use('/templates', emailTemplateRoutes);
 router.use(authRoutes);
 
 // GET /api/stats - Get dashboard statistics
@@ -21,8 +24,9 @@ router.get('/stats', async (_req: unknown, res: Response) => {
   try {
     const [
       totalStudents,
-      totalTemplates,
-      activeTemplates,
+      totalEmailTemplates,
+      totalCertificateTemplates,
+      activeCertificateTemplates,
       pendingCerts,
       generatedCerts,
       sentCerts,
@@ -31,6 +35,7 @@ router.get('/stats', async (_req: unknown, res: Response) => {
       failedEmails,
     ] = await Promise.all([
       studentRepository.count(),
+      emailTemplateRepository.count(),
       certificateTemplateRepository.count(),
       certificateTemplateRepository.countActive(),
       certificateRepository.countByStatus('pending'),
@@ -46,8 +51,10 @@ router.get('/stats', async (_req: unknown, res: Response) => {
       data: {
         students: { total: totalStudents },
         templates: {
-          total: totalTemplates,
-          active: activeTemplates,
+          total: totalEmailTemplates + totalCertificateTemplates,
+          email: totalEmailTemplates,
+          certificate: totalCertificateTemplates,
+          activeCertificates: activeCertificateTemplates,
         },
         certificates: {
           pending: pendingCerts,
