@@ -1,0 +1,9 @@
+{
+  "agent": "agent-2",
+  "phase": null,
+  "task": null,
+  "status": "idle",
+  "startedAt": null,
+  "files": [],
+  "message": "Agent 2 ready - assigned P0, P1, P3, P5, P7"
+}

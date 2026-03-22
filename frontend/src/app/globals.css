@@ -1,0 +1,105 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap'); */
+@import "tailwindcss";
+
+@theme inline {
+  --color-surface-lowest: #0e0e0e;
+  --color-surface-low: #1c1b1b;
+  --color-surface: #201f1f;
+  --color-surface-high: #2a2a2a;
+  --color-surface-highest: #353534;
+  --color-surface-bright: #3a3939;
+  --color-primary: #acc7ff;
+  --color-primary-container: #508ff8;
+  --color-primary-fixed: #d7e2ff;
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #c2c6d5;
+  --color-outline: #8c909e;
+  --color-outline-variant: #424753;
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --font-headline: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-label: 'Inter', sans-serif;
+}
+
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  @apply bg-surface-lowest text-on-surface antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-surface-lowest;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-surface-highest rounded;
+}
+
+::selection {
+  @apply bg-primary/30;
+}
+
+.glass-panel {
+  @apply bg-[rgba(32,31,31,0.6)] backdrop-blur-md border border-[rgba(66,71,83,0.2)];
+}
+
+.ghost-border {
+  @apply border border-outline-variant/20;
+}
+
+.ghost-shadow {
+  box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary-gradient {
+  @apply bg-gradient-to-br from-primary to-primary-container text-white font-headline font-bold;
+  box-shadow: 0 0 15px rgba(172, 199, 255, 0.3);
+}
+
+.text-display {
+  @apply font-headline text-4xl font-light tracking-tight;
+}
+
+.text-headline {
+  @apply font-headline text-2xl font-light tracking-tight;
+}
+
+.text-stats {
+  @apply font-headline tracking-widest;
+}
+
+.input-base {
+  @apply bg-surface-lowest border-none ring-1 ring-white/5 focus:ring-primary/40 text-sm px-4 py-3 text-on-surface rounded-sm transition-all placeholder:text-outline;
+}
+
+/* Phase 7: Polish */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus visible styles */
+:focus-visible {
+  outline: 2px solid hsl(var(--primary) / 0.5);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: hsl(var(--primary) / 0.2);
+  color: hsl(var(--on-surface));
+}

@@ -1,15 +1,14 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { db } from '../db/index.js';
-import * as schema from '../db/schema.js';
+import { db } from './db/index.js';
+import * as schema from './db/schema.js';
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: 'pg',
     schema: {
-      user: schema.users,
-      session: schema.sessions,
-      account: schema.accounts,
+     
+      ...schema
     },
   }),
   emailAndPassword: {
@@ -33,15 +32,7 @@ export const auth = betterAuth({
       },
     },
   },
-  advanced: {
-    // Generate a random secret for development if not provided
-    generateId: {
-      size: 24,
-    },
-  },
-  trustedOrigins: [
-    process.env.APP_URL || 'http://localhost:3000',
-  ],
+  baseURL: process.env.BETTER_AUTH_URL || 'http://localhost:4000',
 });
 
 export type Auth = typeof auth;
